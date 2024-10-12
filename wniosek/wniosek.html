@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wniosek - Wizyta</title>
+    <link rel="stylesheet" href="wniosek_style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="form-section">
+                <h2>Podaj adres</h2>
+                <form id="wniosek-form">
+                    <label for="street">Ulica:</label>
+                    <input type="text" id="street" name="street" required>
+
+                    <label for="house-number">Numer domu:</label>
+                    <input type="text" id="house-number" name="house-number" required>
+
+                    <label for="apartment-number">Numer mieszkania:</label>
+                    <input type="text" id="apartment-number" name="apartment-number">
+
+                    <label for="phone">Telefon:</label>
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{9}" required placeholder="123456789">
+
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+                    
+                    <div class="calendar-section">
+                        <h2>Wybierz datę wizyty</h2>
+                        <label for="date">Data:</label>
+                        <input type="date" id="date" name="date" required>
+
+                        <h3>Wybierz godzinę:</h3>
+                        <label for="time-block">Blok godzinowy:</label>
+                        <select id="time-block" name="time-block" required>
+                            <option value="8-10">8:00 - 10:00</option>
+                            <option value="10-12">10:00 - 12:00</option>
+                            <option value="12-14">12:00 - 14:00</option>
+                            <option value="14-16">14:00 - 16:00</option>
+                            <option value="16-18">16:00 - 18:00</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit">Wyślij wniosek</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="skrypt.js"></script>
+</body>
+</html>
