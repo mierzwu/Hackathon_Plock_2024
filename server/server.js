@@ -21,13 +21,33 @@ const db = new sqlite3.Database('./baza_piece.db', (err) => {
     }
 });
 
-// Obsługa żądania POST na ścieżce /submit
-
-
-app.get('/test', (req, res) =>{
-    res.json({test: 'test'});
+// Obsługa żądania GET na ścieżce /test
+app.get('/test', (req, res) => {
+    res.json({ test: 'test' });
 });
 
+// Obsługa żądania POST na ścieżce /login
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+
+    // Zapytanie do bazy danych, aby sprawdzić, czy użytkownik istnieje
+    const query = `SELECT * FROM ANKIETERZY WHERE LOGIN = ? AND HASLO = ?`;
+
+    db.get(query, [username, password], (err, row) => {
+        if (err) {
+            console.error('Błąd podczas weryfikacji użytkownika:', err);
+            res.status(500).json({ error: 'Błąd podczas weryfikacji użytkownika' });
+        } else if (row) {
+            // Użytkownik został znaleziony
+            res.json({ success: true, message: 'Logowanie udane' });
+        } else {
+            // Nie znaleziono takiego użytkownika
+            res.json({ success: false, message: 'Nieprawidłowy login lub hasło' });
+        }
+    });
+});
+
+// Obsługa żądania POST na ścieżce /submit
 app.post('/submit', (req, res) => {
     const { street, houseNumber, date, timeBlock } = req.body;
 
