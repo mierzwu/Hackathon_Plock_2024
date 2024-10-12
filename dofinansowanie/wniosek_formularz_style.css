@@ -6,8 +6,8 @@ body {
 }
 
 .container {
-    width: 80%;
-    height: 300px;
+    width: 90%; /* Szerokość 90% dla lepszej responsywności */
+    max-width: 600px; /* Maksymalna szerokość dla dużych ekranów */
     margin: 50px auto;
     padding: 20px;
     background-color: white;
@@ -19,6 +19,7 @@ h1 {
     text-align: center;
     color: #850909;
     margin-bottom: 30px;
+    font-size: 1.5rem; /* Używanie jednostek względnych */
 }
 
 form {
@@ -34,13 +35,13 @@ form {
 }
 
 label {
-    font-size: 18px;
+    font-size: 1rem;
     font-weight: bold;
 }
 
 .info-icon {
-    font-size: 16px;
-    margin-left: 10%;
+    font-size: 1rem;
+    margin-left: 5%; /* Mniejszy margines dla lepszej responsywności */
     cursor: pointer;
     color: #850909;
 }
@@ -49,41 +50,44 @@ input {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 15px;
-    font-size: 16px;
+    font-size: 1rem;
     width: 100%;
     margin-top: 10px;
 }
 
 .additional-info {
-    position: absolute;
-    top: 31%;
-position:absolute;
-left: 23%;
-    font-size: 16px;
+    font-size: 1rem;
     text-align: center;
+    margin-top: 20px;
+    position: relative;
+    left: 0;
+    right: 0;
 }
 
 .button-container {
     display: flex;
     justify-content: center;
+    margin-top: 20px;
 }
 
 .custom-login-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    position:absolute;
-    top: 39%;
-    padding-left: 25px;
-    padding-right: 30px;
+    padding-left: 15px; /* Mniejsze paddingi */
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     background-color: white;
     color: black;
     border: 2px solid #00A300; /* Zielona ramka */
     border-radius: 30px; /* Zaokrąglone krawędzie */
-    font-size: 16px;
+    font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s, box-shadow 0.3s;
     font-family: Arial, sans-serif;
+    max-width: 400px; /* Ograniczenie szerokości przycisku */
+    width: 100%; /* Zajmuje całą szerokość rodzica */
 }
 
 .custom-login-button:hover {
@@ -92,13 +96,26 @@ left: 23%;
 }
 
 .login-icon {
-    width: 120px;
-    height: 25px;
+    width: 25px; /* Proporcjonalna wielkość ikony */
+    height: auto;
     margin-right: 10px; /* Odstęp między ikoną a tekstem */
 }
 
-.button-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+/* Media Queries dla urządzeń mobilnych */
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+    }
+
+    .h1 {
+        font-size: 1.3rem; /* Mniejsze nagłówki na telefonach */
+    }
+
+    .custom-login-button {
+        font-size: 0.9rem; /* Zmniejszenie przycisku na mniejszych ekranach */
+    }
+
+    .login-icon {
+        width: 20px; /* Mniejsza ikona na telefonach */
+    }
 }
