@@ -7,10 +7,11 @@ body {
 
 .container {
     width: 80%;
+    height: 300px;
     margin: 50px auto;
     padding: 20px;
     background-color: white;
-    border-radius: 8px;
+    border-radius: 30px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -23,33 +24,81 @@ h1 {
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
+}
+
+.verification-code-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 label {
     font-size: 18px;
+    font-weight: bold;
 }
 
-input, select {
+.info-icon {
+    font-size: 16px;
+    margin-left: 10%;
+    cursor: pointer;
+    color: #850909;
+}
+
+input {
     padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 15px;
     font-size: 16px;
     width: 100%;
+    margin-top: 10px;
 }
 
-button {
-    padding: 15px;
-    background-color: #850909;
-    color: white;
-    border: none;
-    border-radius: 5px;
+.additional-info {
+    position: absolute;
+    top: 31%;
+position:absolute;
+left: 23%;
+    font-size: 16px;
+    text-align: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.custom-login-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position:absolute;
+    top: 39%;
+    padding-left: 25px;
+    padding-right: 30px;
+    background-color: white;
+    color: black;
+    border: 2px solid #00A300; /* Zielona ramka */
+    border-radius: 30px; /* Zaokrąglone krawędzie */
+    font-size: 16px;
     cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s;
-    width: 100%;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    font-family: Arial, sans-serif;
 }
 
-button:hover {
-    background-color: #a31a1a;
+.custom-login-button:hover {
+    background-color: #f0f0f0;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Cień po najechaniu */
+}
+
+.login-icon {
+    width: 120px;
+    height: 25px;
+    margin-right: 10px; /* Odstęp między ikoną a tekstem */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
