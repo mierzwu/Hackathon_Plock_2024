@@ -12,6 +12,9 @@ app.use(cors());
 // Middleware do obsługi JSON
 app.use(bodyParser.json());
 
+app.use(express.static('../ankieterzy'));
+
+
 // Połączenie z bazą danych SQLite
 const db = new sqlite3.Database('./baza_piece.db', (err) => {
     if (err) {
@@ -21,28 +24,41 @@ const db = new sqlite3.Database('./baza_piece.db', (err) => {
     }
 });
 
-// Obsługa żądania GET na ścieżce /test
-app.get('/test', (req, res) => {
-    res.json({ test: 'test' });
+// Obsługa żądania GET na ścieżce /places
+app.get('/places', (req, res) => {
+    const query = `SELECT Ulica, Numer_budynku, Numer_lokalu FROM Adresy WHERE ID_ANKIETER = 1`;
+
+    db.all(query, [], (err, rows) => {
+        if (err) {
+            console.error('Błąd podczas pobierania placesów:', err);
+            return res.status(500).json({ error: 'Błąd podczas pobierania placesów' });
+        }
+
+        // Jeśli dane zostały poprawnie pobrane, zwracamy je jako JSON
+        res.status(200).json(rows);
+    });
 });
+
 
 // Obsługa żądania POST na ścieżce /login
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
 
-    // Zapytanie do bazy danych, aby sprawdzić, czy użytkownik istnieje
+    // Zapytanie do bazy danych w celu weryfikacji danych logowania
     const query = `SELECT * FROM ANKIETERZY WHERE LOGIN = ? AND HASLO = ?`;
 
     db.get(query, [username, password], (err, row) => {
         if (err) {
-            console.error('Błąd podczas weryfikacji użytkownika:', err);
-            res.status(500).json({ error: 'Błąd podczas weryfikacji użytkownika' });
-        } else if (row) {
+            console.error('Błąd podczas logowania:', err);
+            return res.status(500).json({ success: false, error: 'Błąd podczas logowania' });
+        }
+
+        if (row) {
             // Użytkownik został znaleziony
-            res.json({ success: true, message: 'Logowanie udane' });
+            return res.status(200).json({ success: true, message: 'Logowanie udane', user: row });
         } else {
-            // Nie znaleziono takiego użytkownika
-            res.json({ success: false, message: 'Nieprawidłowy login lub hasło' });
+            // Użytkownik nie został znaleziony
+            return res.status(401).json({ success: false, error: 'Błędna nazwa użytkownika lub hasło' });
         }
     });
 });
