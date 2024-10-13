@@ -1,0 +1,35 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+/* Stylizacja nagłówka */
+.header-image {
+    width: 100%;
+    max-width: 600px; /* Ustaw maksymalną szerokość obrazu nagłówka */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Stylizacja ikony zatwierdzenia */
+.confirmation-icon {
+    position: absolute;
+    top: 55%;
+}
+
+.checkmark-image {
+    width: 100px; /* Ustawienie rozmiaru ikony zatwierdzenia */
+    height: auto;
+}
+
+.message {
+    margin-top: 20px;
+    font-size: 24px;
+}
