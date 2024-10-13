@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0; /* Usunięcie paddingu dla body */
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #850909;
+    padding: 15px;
+    border-radius: 35px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: white;
+}
+
+.task-list {
+    margin: 20px;
+}
+
+.task {
+    margin: 10px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.task:hover {
+    background-color: #f1f1f1;
+}
+
+.task-content {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease;
+    margin-top: 10px;
+}
+
+.task.active .task-content {
+    max-height: 100px; /* Wysokość rozwinięcia */
+}
+
+.task-content button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 20px; /* Zaokrąglenie przycisku */
+    transition: background-color 0.2s ease;
+}
+
+.task-content button.wypelnij-ankiete {
+    background-color: #505050; /* Kolor tła przycisku 'Wypełnij ankietę' */
+}
+
+.task-content button.wypelnij-ankiete:hover {
+    background-color: #2f9d32; /* Zielony kolor po najechaniu */
+}
+
+.task-content button.mieszkaniec-nieobecny {
+    background-color: #505050; /* Kolor tła przycisku 'Mieszkaniec nieobecny' */
+}
+
+.task-content button.mieszkaniec-nieobecny:hover {
+    background-color: #a31a1a; /* Czerwony kolor po najechaniu */
+}

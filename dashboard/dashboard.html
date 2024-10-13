@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel użytkownika</title>
+    <link rel="stylesheet" href="dashboard_style.css">
+</head>
+<body>
+    <header>
+        <h1 id="greeting">Witaj, [Imię]!</h1>
+    </header>
+
+    <div class="task-list">
+        <div class="task" id="task-1">
+            <div class="task-header">
+                <p>Zadanie 1 - Adres: Ul. Przykładowa 123, Godzina: 10:00 - 12:00, Mieszkaniec: Jan Kowalski, Tel: 123456789</p>
+            </div>
+            <div class="task-content">
+                <button class="wypelnij-ankiete" onclick="handleAnkieta(1)">Wypełnij ankietę</button>
+                <button class="mieszkaniec-nieobecny" onclick="handleNieobecnosc(1)">Mieszkaniec nieobecny</button>
+            </div>
+        </div>
+
+        <div class="task" id="task-2">
+            <div class="task-header">
+                <p>Zadanie 2 - Adres: Ul. Nowa 45, Godzina: 12:00 - 14:00, Mieszkaniec: Anna Nowak, Tel: 987654321</p>
+            </div>
+            <div class="task-content">
+                <button class="wypelnij-ankiete" onclick="handleAnkieta(2)">Wypełnij ankietę</button>
+                <button class="mieszkaniec-nieobecny" onclick="handleNieobecnosc(2)">Mieszkaniec nieobecny</button>
+            </div>
+        </div>
+
+        <div class="task" id="task-3">
+            <div class="task-header">
+                <p>Zadanie 3 - Adres: Ul. Miejska 88, Godzina: 14:00 - 16:00, Mieszkaniec: Piotr Wiśniewski, Tel: 555333222</p>
+            </div>
+            <div class="task-content">
+                <button class="wypelnij-ankiete" onclick="handleAnkieta(3)">Wypełnij ankietę</button>
+                <button class="mieszkaniec-nieobecny" onclick="handleNieobecnosc(3)">Mieszkaniec nieobecny</button>
+            </div>
+        </div>
+
+        <div class="task" id="task-4">
+            <div class="task-header">
+                <p>Zadanie 4 - Adres: Ul. Spacerowa 10, Godzina: 16:00 - 18:00, Mieszkaniec: Katarzyna Mazur, Tel: 666888777</p>
+            </div>
+            <div class="task-content">
+                <button class="wypelnij-ankiete" onclick="handleAnkieta(4)">Wypełnij ankietę</button>
+                <button class="mieszkaniec-nieobecny" onclick="handleNieobecnosc(4)">Mieszkaniec nieobecny</button>
+            </div>
+        </div>
+
+        <div class="task" id="task-5">
+            <div class="task-header">
+                <p>Zadanie 5 - Adres: Ul. Łąkowa 20, Godzina: 18:00 - 20:00, Mieszkaniec: Krzysztof Malinowski, Tel: 444222111</p>
+            </div>
+            <div class="task-content">
+                <button class="wypelnij-ankiete" onclick="handleAnkieta(5)">Wypełnij ankietę</button>
+                <button class="mieszkaniec-nieobecny" onclick="handleNieobecnosc(5)">Mieszkaniec nieobecny</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
