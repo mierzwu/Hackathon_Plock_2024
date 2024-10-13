@@ -1,4 +1,4 @@
-/* Ogólne style dla strony */
+/* Ogólne style dla body */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -6,108 +6,77 @@ body {
     padding: 0;
 }
 
-/* Kontener FAQ */
-.faq-container {
-    width: 90%; /* Szerokość kontenera na urządzeniach mobilnych */
-    max-width: 900px; /* Maksymalna szerokość */
-    margin: 50px auto; /* Margines górny i centrowanie */
-    background-color: #ffffff; /* Tło kontenera */
-    border-radius: 20px; /* Zaokrąglone rogi */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Cień dla kontenera */
-    padding: 20px; /* Padding wewnętrzny */
+/* Styl kontenera */
+.container {
+    width: 80%;
+    margin: 50px auto; /* Wyśrodkowanie kontenera */
+    padding: 20px;
+    background-color: white;
+    border-radius: 25px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Nagłówek */
+/* Styl nagłówka */
 h1 {
     text-align: center;
-    margin-bottom: 40px;
-    color: #2c3e50; /* Kolor nagłówka */
+    color: #00b09b;
+    margin-bottom: 30px;
 }
 
-/* Elementy FAQ */
-.faq-item {
-    margin-bottom: 20px; /* Margines dolny */
-    border-bottom: 1px solid #ddd; /* Dolna linia */
+/* Styl akapitu */
+p {
+    font-size: 18px;
+    line-height: 1.6; /* Zwiększenie interlinii dla lepszej czytelności */
+    margin-bottom: 20px;
 }
 
-.faq-question {
-    width: 100%;
-    background-color: #0072ff; /* Niebieskie tło */
+/* Styl linków */
+a {
+    color: #96c93d;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline; /* Podkreślenie po najechaniu */
+}
+
+/* Kontener przycisków */
+.button-container {
+    display: flex;
+    justify-content: center; /* Wyśrodkowanie przycisków */
+}
+
+/* Styl przycisków */
+button {
+    padding: 15px 30px;
+    
+    background-color: #363636;
     color: white;
-    padding: 15px;
-    text-align: left;
     border: none;
-    border-radius: 20px; /* Zaokrąglenie krawędzi */
-    outline: none; /* Bez konturu */
-    cursor: pointer; /* Zmiana kursora */
-    font-size: 18px; /* Rozmiar czcionki */
-    transition: background-color 0.3s; /* Efekt przejścia */
+    border-radius: 23px; /* Użycie jednolitej wartości zaokrąglenia */
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease; /* Płynna zmiana koloru tła */
 }
 
-.faq-question:hover {
-    background-color: #0056b3; /* Ciemniejszy niebieski przy najechaniu */
-}
-
-/* Odpowiedzi FAQ */
-.faq-answer {
-    margin-top: 8px; /* Margines górny */
-    padding: 18px; /* Padding wewnętrzny */
-    display: none; /* Ukrycie domyślne */
-    background-color: #f4f4f4; /* Tło dla odpowiedzi */
-    border: 1px solid #ddd; /* Ramka */
-    border-radius: 20px; /* Zaokrąglenie */
-}
-
-.faq-answer p {
-    margin: 0; /* Marginesy w odpowiedzi */
-}
-
-/* Sekcja kontaktowa */
-.contact-info {
-    margin: 40px auto; /* Margines automatyczny */
-    padding: 20px; /* Padding wewnętrzny */
-    border-radius: 20px; /* Zaokrąglone rogi */
-    background-color: #f4f4f4; /* Tło sekcji kontaktowej */
-    text-align: center; /* Wyśrodkowanie tekstu */
-}
-
-/* Style dla przycisku telefonu */
-.kontakt3 {
-    display: flex; /* Flexbox dla łatwego ułożenia */
-    justify-content: center; /* Wyśrodkowanie */
-    align-items: center; /* Wyśrodkowanie w pionie */
-    margin-top: 10px; /* Margines górny */
-}
-
-/* Ikona telefonu */
-.kontakt3 i {
-    margin-right: 8px; /* Odstęp między ikoną a tekstem */
-    color: #28a745; /* Kolor ikony */
-}
-
-.kontakt1 {
-    font-size: 20px; /* Rozmiar czcionki dla nagłówka kontaktu */
-}
-
-.kontakt2 {
-    font-size: 16px; /* Rozmiar czcionki dla podtytułu */
+button:hover {
+    background-color: #41e6d2;
+    background-image: linear-gradient(to right, #00b09b, #96c93d);
 }
 
 /* Responsywność */
 @media (max-width: 768px) {
-    .faq-container {
-        width: 95%; /* Szerokość kontenera na urządzeniach mobilnych */
-    }
-    
-    .kontakt1, .kontakt2 {
-        font-size: 16px; /* Mniejszy rozmiar czcionki na mobile */
+    .container {
+        width: 90%; /* Zwiększenie szerokości kontenera na małych ekranach */
     }
 
-    .faq-question {
-        font-size: 16px; /* Mniejszy rozmiar czcionki dla pytań */
+    button {
+        font-size: 16px; /* Zmniejszenie rozmiaru czcionki przycisków na małych ekranach */
+        padding: 12px 20px; /* Mniejsze paddingi dla przycisków na mniejszych ekranach */
     }
 
-    .faq-answer {
-        font-size: 14px; /* Mniejszy rozmiar czcionki dla odpowiedzi */
+    p {
+        font-size: 16px; /* Zmniejszenie rozmiaru czcionki akapitów na małych ekranach */
     }
 }
