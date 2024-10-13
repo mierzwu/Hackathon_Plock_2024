@@ -1,56 +1,60 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const userName = 'Jan'; // Tutaj wstaw imię użytkownika np. pobrane z serwera
-    document.getElementById('greeting').textContent = `Witaj, ${userName}!`;
-
-    // Dodaj event listener do każdego zadania
-    const tasks = document.querySelectorAll('.task');
-    tasks.forEach(task => {
-        task.addEventListener('click', function(event) {
-            event.stopPropagation(); // Zatrzymaj dalszą propagację
-
-            if (this.classList.contains('active')) {
-                closeTask(this); // Zamykanie zadania
-            } else {
-                closeAllTasks(); // Zamykanie wszystkich innych zadań
-                openTask(this); // Otwieranie bieżącego zadania
+document.addEventListener('DOMContentLoaded', () => {
+    // Funkcja do pobrania danych z serwera
+    async function fetchTasks() {
+        try {
+            const response = await fetch('/api/places'); // Endpoint, który zwraca dane o zadaniach w formacie JSON
+            if (!response.ok) {
+                throw new Error('Błąd sieci');
             }
-        });
-    });
+            const places = await response.json(); // Konwersja odpowiedzi do formatu JSON
+            generateTasks(places);
+        } catch (error) {
+            console.error('Błąd pobierania danych:', error);
+            document.getElementById('taskList').textContent = 'Błąd ładowania zadań.';
+        }
+    }
 
-    // Kliknięcie w dowolne miejsce poza zadaniem zamyka otwarte zadania
-    document.addEventListener('click', function() {
-        closeAllTasks();
-    });
+    // Funkcja do dynamicznego generowania zadań na podstawie danych z serwera
+    function generateTasks(places) {
+        const taskList = document.getElementById('taskList');
+        taskList.innerHTML = ''; // Wyczyszczenie listy zadań (jeśli było "Ładowanie zadań...")
+
+        if (places.length === 0) {
+            taskList.textContent = 'Brak dostępnych zadań.';
+            return;
+        }
+
+        places.forEach((place, index) => {
+            const taskDiv = document.createElement('div');
+            taskDiv.classList.add('task');
+            taskDiv.id = `task-${index + 1}`;
+
+            const taskHeader = document.createElement('div');
+            taskHeader.classList.add('task-header');
+            taskHeader.innerHTML = `<p>Zadanie ${index + 1} - Adres: ${place.Ulica} ${place.Numer_budynku}, Godzina: ${place.Godzina}, Mieszkaniec: ${place.Mieszkaniec}, Tel: ${place.Tel}</p>`;
+
+            const taskContent = document.createElement('div');
+            taskContent.classList.add('task-content');
+            taskContent.innerHTML = `
+                <button class="wypelnij-ankiete" onclick="handleAnkieta(${index + 1})">Wypełnij ankietę</button>
+                <button class="mieszkaniec-nieobecny" onclick="handleNieobecnosc(${index + 1})">Mieszkaniec nieobecny</button>
+            `;
+
+            taskDiv.appendChild(taskHeader);
+            taskDiv.appendChild(taskContent);
+            taskList.appendChild(taskDiv);
+        });
+    }
+
+    // Wywołanie funkcji pobierającej zadania po załadowaniu strony
+    fetchTasks();
 });
 
-// Funkcja otwierająca zadanie
-function openTask(task) {
-    const content = task.querySelector('.task-content');
-    task.classList.add('active');
-    content.style.maxHeight = content.scrollHeight + 'px'; // Ustawienie dynamicznej wysokości
-}
-
-// Funkcja zamykająca zadanie
-function closeTask(task) {
-    const content = task.querySelector('.task-content');
-    task.classList.remove('active');
-    content.style.maxHeight = '0'; // Zwijanie zadania
-}
-
-// Funkcja zamykająca wszystkie zadania
-function closeAllTasks() {
-    const activeTasks = document.querySelectorAll('.task.active');
-    activeTasks.forEach(task => closeTask(task));
-}
-
-// Obsługa wypełnienia ankiety
+// Funkcje do obsługi kliknięć w przyciski
 function handleAnkieta(taskId) {
-    alert(`Przejście do ankiety dla zadania ${taskId}`);
-    window.location.href = `ankieta.html?task=${taskId}`; // Przekierowanie do strony ankiety
+    alert('Wypełnij ankietę dla zadania ' + taskId);
 }
 
-// Obsługa "Mieszkaniec nieobecny"
 function handleNieobecnosc(taskId) {
-    alert(`Mieszkaniec nieobecny dla zadania ${taskId}`);
-    // Możesz dodać więcej operacji, np. zapisanie informacji o nieobecności
+    alert('Mieszkaniec nieobecny dla zadania ' + taskId);
 }
