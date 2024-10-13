@@ -30,6 +30,27 @@ document.addEventListener('DOMContentLoaded', function() {
             timeBlock: document.getElementById('time-block').value
         };
 
+        const email_data = {
+            date: document.getElementById('date').value,
+            timeBlock: document.getElementById('time-block').value 
+        }
+
+        fetch('http://192.168.150.174:3000/email', { // Updated to localhost for consistency
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(email_data),
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert('Dane zostały przesłane pomyślnie.');
+        })
+        .catch((error) => {
+            console.error('Błąd:', error);
+            alert('Wystąpił błąd podczas przesyłania danych.');
+        });
+
         fetch('http://192.168.150.174:3000/submit', {
             method: 'POST',
             headers: {
