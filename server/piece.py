@@ -20,7 +20,7 @@ def tworzenie_tabeli_piece():
     conection.commit()
     
 def wpisz():
-    email = "mierzwickiszymon1@gmail.com"
+    email = ""#test email
     i=1
     for i in range(30):
         typ = ["na paliwo stałe","Ogrzewanie olejowe","Ogrzewanie gazowe","Ogrzewanie elektryczne","Ogrzewanie z m.s.c.","OZE","Inne źródło ogrzewania"]
