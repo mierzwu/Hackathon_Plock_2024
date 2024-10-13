@@ -30,9 +30,51 @@ form {
 
 .verification-code-section {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    margin-bottom: 20px;
+    text-align: center; /* Wyśrodkowuje tekst w etykiecie */
 }
+
+label {
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center; /* Wyśrodkowuje tekst i ikonę w poziomie */
+    align-items: center;
+    gap: 5px; /* Odstęp między tekstem a ikoną informacji */
+}
+
+.info-icon {
+    font-size: 1rem;
+    cursor: pointer;
+    color: #850909;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    font-size: 1rem;
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+.info-icon {
+    font-size: 1rem;
+    cursor: pointer;
+    color: #850909;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    font-size: 1rem;
+    width: 100%;
+    margin-top: 10px; /* Dodaje odstęp między etykietą a polem input */
+}
+
 
 label {
     font-size: 1rem;
@@ -41,7 +83,6 @@ label {
 
 .info-icon {
     font-size: 1rem;
-    margin-left: 5%; /* Mniejszy margines dla lepszej responsywności */
     cursor: pointer;
     color: #850909;
 }
@@ -58,26 +99,20 @@ input {
 .additional-info {
     font-size: 1rem;
     text-align: center;
-    margin-top: 20px;
     position: relative;
-    left: 0;
-    right: 0;
+    top: 23px;
 }
 
 .button-container {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .custom-login-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-left: 15px; /* Mniejsze paddingi */
-    padding-right: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
     background-color: white;
     color: black;
     border: 2px solid #00A300; /* Zielona ramka */
@@ -96,13 +131,13 @@ input {
 }
 
 .login-icon {
-    width: 25px; /* Proporcjonalna wielkość ikony */
+    width: 100px; /* Proporcjonalna wielkość ikony */
     height: auto;
     margin-right: 10px; /* Odstęp między ikoną a tekstem */
 }
 
 /* Media Queries dla urządzeń mobilnych */
-@media (max-width: 600px) {
+@media (max-width: 1200px) {
     .container {
         width: 95%;
     }
@@ -115,7 +150,4 @@ input {
         font-size: 0.9rem; /* Zmniejszenie przycisku na mniejszych ekranach */
     }
 
-    .login-icon {
-        width: 20px; /* Mniejsza ikona na telefonach */
-    }
 }
