@@ -2,6 +2,7 @@ const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
 const cors = require('cors'); // Dodaj pakiet cors
+const { exec } = require('child_process');
 
 const app = express();
 const port = 3000;
@@ -24,9 +25,35 @@ const db = new sqlite3.Database('./baza_piece.db', (err) => {
     }
 });
 
+app.post('/email', (req, res) => {
+    const email = 'janszala.04@gmail.com';
+    const data = req.body.data; // Assuming you meant req.body.data
+    const time = req.body.timeBlock; // Assuming you meant req.body.timeBlock
+
+    // Construct the command to run the Python script with arguments
+    const command = `python3 ../python/confirmation_sender.py ${email} ${data} ${time}`;
+
+    // Execute the command
+    exec(command, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error: ${error.message}`);
+            res.status(500).json({ message: 'Error executing script' });
+            return;
+        }
+        if (stderr) {
+            console.error(`Standard Error: ${stderr}`);
+            res.status(500).json({ message: 'Script execution error' });
+            return;
+        }
+
+        console.log(`Standard Output: ${stdout}`);
+        res.json({ message: 'Dane zostały zaktualizowane pomyślnie' });
+    });
+});
+
 // Obsługa żądania GET na ścieżce /places
 app.get('/places', (req, res) => {
-    const query = `SELECT Ulica, Numer_budynku, Numer_lokalu FROM Adresy WHERE ID_ANKIETER = 1`;
+    const query = `SELECT ID, Ulica, Numer_budynku, Numer_lokalu FROM Adresy WHERE ID_ANKIETER = 1`;
 
     db.all(query, [], (err, rows) => {
         if (err) {
@@ -38,6 +65,7 @@ app.get('/places', (req, res) => {
         res.status(200).json(rows);
     });
 });
+
 
 
 // Obsługa żądania POST na ścieżce /login

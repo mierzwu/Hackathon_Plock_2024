@@ -17,7 +17,15 @@ document.querySelector('form').addEventListener('submit', function (event) {
         if (data.success) {
             //alert('Logowanie zakończone sukcesem!');
             // Możesz przekierować na stronę główną
-            window.location.href = 'homepage.html';
+            if('eko' == username){
+                window.location.href = '../dashboard_ekodoradca/dashboard.html';
+            }
+            else if('str' == username){
+                window.location.href = '../dashboard_straznik/dashboard.html';
+            }
+            else{
+                window.location.href = '../urzednik/urzednik.html';
+            }
         } else {
             alert('Błędny login lub hasło');
         }

@@ -32,7 +32,7 @@ h1 {
 
 .faq-question {
     width: 100%;
-    background-color: #0072ff; /* Niebieskie tło */
+    background-color: #363636;
     color: white;
     padding: 15px;
     text-align: left;
@@ -45,7 +45,7 @@ h1 {
 }
 
 .faq-question:hover {
-    background-color: #0056b3; /* Ciemniejszy niebieski przy najechaniu */
+    background-image: #363636;
 }
 
 /* Odpowiedzi FAQ */
@@ -96,7 +96,7 @@ h1 {
 /* Responsywność */
 @media (max-width: 768px) {
     .faq-container {
-        width: 95%; /* Szerokość kontenera na urządzeniach mobilnych */
+        width: 90%; /* Szerokość kontenera na urządzeniach mobilnych */
     }
     
     .kontakt1, .kontakt2 {

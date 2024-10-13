@@ -20,7 +20,7 @@ body {
 /* Nagłówek */
 h1 {
     text-align: center;
-    color: #850909;
+    color: #418509;
     margin-bottom: 30px;
     font-size: 1.5rem; /* Używanie jednostek względnych */
 }
@@ -54,7 +54,7 @@ label {
 .info-icon {
     font-size: 1rem;
     cursor: pointer;
-    color: #850909;
+    color: #21b00e;
 }
 
 /* Pole tekstowe */

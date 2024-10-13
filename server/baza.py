@@ -24,6 +24,13 @@ def dodaj():
     connection.commit()
     connection.close()
 
+def wypisz():
+    connection = sqlite3.connect('baza_piece.db')
+    database = connection.cursor()
+    database.execute("SELECT * FROM ANKIETERZY")
+    connection.commit()
+    print(database.fetchall())
+
 def main():
     decyzja = int(input("1. Jeśli chcesz stworzyć baze, 2. jeśli chcesz dodać kolejnego ankietera\n"))
 
@@ -33,3 +40,4 @@ def main():
         dodaj()
 
 main()
+wypisz()

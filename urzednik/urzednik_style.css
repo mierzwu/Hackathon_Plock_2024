@@ -35,7 +35,7 @@ h1 {
 
 .wniosek-name {
     font-size: 18px;
-    color: #850909;
+    color: #363636;
 }
 
 .buttons {
@@ -63,52 +63,23 @@ h1 {
 .button:hover {
     background-color: #a31a1a;
 }
-
-/* MEDIA QUERIES dla urządzeń mobilnych */
 @media (max-width: 768px) {
-    .container {
-        width: 95%;
-        margin: 20px auto;
+    .wniosek-item {
+        flex-direction: column; /* Ustawienie układu kolumnowego na mniejszych ekranach */
+        align-items: flex-start; /* Wyrównanie elementów do początku */
     }
 
-    .wniosek-item {
-        flex-direction: column;
-        align-items: flex-start;
+    .wniosek-name {
+        width: 100%; /* Zapewnienie pełnej szerokości dla zawijania tekstu */
+        margin-bottom: 10px; /* Dodanie odstępu na dole, aby oddzielić od przycisków */
     }
 
     .buttons {
-        margin-top: 10px;
-        opacity: 1;
+        width: 100%; /* Ustawienie przycisków na pełną szerokość kontenera */
+        justify-content: flex-start; /* Wyrównanie przycisków do początku */
     }
 
     .button {
-        font-size: 16px;
-        width: 100%;
-        padding: 15px;
-        text-align: center;
-    }
-
-    .wniosek-name {
-        font-size: 20px;
-        margin-bottom: 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 24px;
-    }
-
-    .wniosek-item {
-        padding: 10px;
-    }
-
-    .button {
-        font-size: 14px;
-        padding: 10px;
-    }
-
-    .wniosek-name {
-        font-size: 18px;
+        width: auto; /* Dostosowanie szerokości przycisków, aby były bardziej elastyczne */
     }
 }
