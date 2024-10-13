@@ -18,7 +18,7 @@ header {
 
 /* Lista zadań */
 .task-list {
-    margin: 20px;
+    margin: 20px 0; /* Dodatkowy margines górny i dolny */
 }
 
 /* Element pojedynczego zadania */
@@ -32,6 +32,7 @@ header {
     transition: background-color 0.2s ease;
 }
 
+/* Efekt hover dla zadania */
 .task:hover {
     background-color: #f1f1f1; /* Kolor tła po najechaniu */
 }
@@ -39,11 +40,12 @@ header {
 /* Treść zadania */
 .task-content {
     overflow: hidden;
-    max-height: 0;
+    max-height: 0; /* Ukrycie treści */
     transition: max-height 0.3s ease;
     margin-top: 10px;
 }
 
+/* Aktywacja treści zadania */
 .task.active .task-content {
     max-height: 100px; /* Wysokość rozwinięcia */
 }
@@ -78,4 +80,16 @@ header {
 
 .task-content button.mieszkaniec-nieobecny:hover {
     background-color: #a31a1a; /* Czerwony kolor po najechaniu */
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+    /* Dostosowanie do mniejszych ekranów */
+    .task {
+        padding: 10px; /* Mniejsze paddingi w zadaniach */
+    }
+
+    .task-content button {
+        font-size: 14px; /* Mniejszy rozmiar czcionki dla przycisków */
+    }
 }
