@@ -1,3 +1,4 @@
+/* Ogólne style dla strony */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -5,75 +6,100 @@ body {
     padding: 0;
 }
 
+/* Kontener FAQ */
 .faq-container {
-    width: 80%;
-    margin: 50px auto;
+    width: 90%; /* Szerokość kontenera na urządzeniach mobilnych */
+    max-width: 900px; /* Maksymalna szerokość */
+    margin: 50px auto; /* Margines górny i centrowanie */
+    background-color: #ffffff; /* Tło kontenera */
+    border-radius: 20px; /* Zaokrąglone rogi */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Cień dla kontenera */
+    padding: 20px; /* Padding wewnętrzny */
 }
 
+/* Nagłówek */
 h1 {
     text-align: center;
     margin-bottom: 40px;
+    color: #2c3e50; /* Kolor nagłówka */
 }
 
+/* Elementy FAQ */
 .faq-item {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px; /* Margines dolny */
+    border-bottom: 1px solid #ddd; /* Dolna linia */
 }
 
 .faq-question {
     width: 100%;
-    background-color: #850909;
+    background-color: #0072ff; /* Niebieskie tło */
     color: white;
     padding: 15px;
     text-align: left;
     border: none;
-    border-radius: 20px;
-    outline: none;
-    cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s;
+    border-radius: 20px; /* Zaokrąglenie krawędzi */
+    outline: none; /* Bez konturu */
+    cursor: pointer; /* Zmiana kursora */
+    font-size: 18px; /* Rozmiar czcionki */
+    transition: background-color 0.3s; /* Efekt przejścia */
 }
 
 .faq-question:hover {
-    background-color: #a31a1a;
+    background-color: #0056b3; /* Ciemniejszy niebieski przy najechaniu */
 }
 
+/* Odpowiedzi FAQ */
 .faq-answer {
-    margin-top: 8px;
-    padding: 18px;
-    display: none;
-    background-color: #f4f4f4;
-    border-style: solid;
-    border-radius: 20px;
+    margin-top: 8px; /* Margines górny */
+    padding: 18px; /* Padding wewnętrzny */
+    display: none; /* Ukrycie domyślne */
+    background-color: #f4f4f4; /* Tło dla odpowiedzi */
+    border: 1px solid #ddd; /* Ramka */
+    border-radius: 20px; /* Zaokrąglenie */
 }
 
 .faq-answer p {
-    margin: 0;
+    margin: 0; /* Marginesy w odpowiedzi */
 }
 
+/* Sekcja kontaktowa */
 .contact-info {
-    position: center;
-    left:auto ;
-    color:#363636;
-    padding: 10px;
-    margin-left: 10%;
-    margin-right: 10%;
-    border-style: solid;
-    border-radius: 20px;
-    background-color: #f4f4f4;
-
+    margin: 40px auto; /* Margines automatyczny */
+    padding: 20px; /* Padding wewnętrzny */
+    border-radius: 20px; /* Zaokrąglone rogi */
+    background-color: #f4f4f4; /* Tło sekcji kontaktowej */
+    text-align: center; /* Wyśrodkowanie tekstu */
 }
 
-.kontakt1{
-    position:relative;
-    left: 25%;
-}
-.kontakt2{
-    position:relative;
-    left: -16%;
-}
-.kontakt3{
-    position:relative;
-    left: 16%;
+/* Style dla przycisku telefonu */
+.kontakt3 {
+    display: flex; /* Flexbox dla łatwego ułożenia */
+    justify-content: center; /* Wyśrodkowanie */
+    align-items: center; /* Wyśrodkowanie w pionie */
+    margin-top: 10px; /* Margines górny */
 }
 
+/* Ikona telefonu */
+.kontakt3 i {
+    margin-right: 8px; /* Odstęp między ikoną a tekstem */
+    color: #28a745; /* Kolor ikony */
+}
+
+.kontakt1 {
+    font-size: 20px; /* Rozmiar czcionki dla nagłówka kontaktu */
+}
+
+.kontakt2 {
+    font-size: 16px; /* Rozmiar czcionki dla podtytułu */
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+    .faq-container {
+        width: 95%; /* Szerokość kontenera na urządzeniach mobilnych */
+    }
+    
+    .kontakt1, .kontakt2 {
+        font-size: 16px; /* Mniejszy rozmiar czcionki na mobile */
+    }
+}
