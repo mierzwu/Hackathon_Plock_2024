@@ -22,6 +22,7 @@ body {
 }
 
 .logo img {
+    top: 0;
     width: 400px;  /* Zwiększony rozmiar obrazka */
     height: auto;  /* Zachowanie proporcji */
     filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.3));
@@ -29,7 +30,9 @@ body {
 }
 
 .button-container {
-    margin-top: -20;
+    position: relative;
+    top: -75px;
+    margin-top: -20px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -70,9 +73,10 @@ body {
     transform: translateY(-3px);
 }
 .logoplock img {
-    position: absolute;
-    bottom: 3%;
-    right: 3%;
+    position: relative;
+    position: center;
+    top: -30px;
+    margin-top: -50px;
     filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
     max-width: 170px;
 }
@@ -83,6 +87,6 @@ body {
     }
 
     .button {
-        max-width: 100%;
+        max-width: 95%;
     }
 }
