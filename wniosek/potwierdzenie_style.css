@@ -12,6 +12,8 @@ body {
 
 /* Stylizacja nagłówka */
 .header-image {
+    position: relative;
+    top: -100px;
     width: 100%;
     max-width: 600px; /* Ustaw maksymalną szerokość obrazu nagłówka */
     height: auto;
@@ -20,8 +22,8 @@ body {
 
 /* Stylizacja ikony zatwierdzenia */
 .confirmation-icon {
-    position: absolute;
-    top: 55%;
+    position: relative;
+    top: -200px;
 }
 
 .checkmark-image {
@@ -30,6 +32,8 @@ body {
 }
 
 .message {
+    position: relative;
+    top: -150px;
     margin-top: 20px;
     font-size: 24px;
 }
