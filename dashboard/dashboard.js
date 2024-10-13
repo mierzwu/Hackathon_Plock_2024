@@ -29,10 +29,15 @@ document.addEventListener('DOMContentLoaded', () => {
             taskDiv.classList.add('task');
             taskDiv.id = `task-${index + 1}`;
 
-            const taskHeader = document.createElement('div');
-            taskHeader.classList.add('task-header');
-            taskHeader.innerHTML = `<p>Zadanie ${index + 1} - Adres: ${place.Ulica} ${place.Numer_budynku}, Godzina: ${place.Godzina}, Mieszkaniec: ${place.Mieszkaniec}, Tel: ${place.Tel}</p>`;
+            // Główny przycisk dla zadania
+            const taskButton = document.createElement('button');
+            taskButton.classList.add('task-button');
+            taskButton.innerHTML = `Zadanie ${index + 1} - Adres: ${place.Ulica} ${place.Numer_budynku}, Godzina: ${place.Godzina}, Mieszkaniec: ${place.Mieszkaniec}, Tel: ${place.Tel}`;
+            taskButton.addEventListener('click', () => {
+                taskDiv.classList.toggle('active'); // Przełączenie widoczności ukrytych przycisków
+            });
 
+            // Sekcja z dwoma przyciskami
             const taskContent = document.createElement('div');
             taskContent.classList.add('task-content');
             taskContent.innerHTML = `
@@ -40,7 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <button class="mieszkaniec-nieobecny" onclick="handleNieobecnosc(${index + 1})">Mieszkaniec nieobecny</button>
             `;
 
-            taskDiv.appendChild(taskHeader);
+            // Złożenie elementów
+            taskDiv.appendChild(taskButton);
             taskDiv.appendChild(taskContent);
             taskList.appendChild(taskDiv);
         });
