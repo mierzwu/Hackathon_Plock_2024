@@ -20,7 +20,8 @@ def tworzenie_tabeli_adresy():
         Data_Odwiedzin DATE,             
         Godzina_Odwiedzin TEXT,
         EMAIL TEXT,
-        KOD TEXT
+        KOD TEXT,
+        ID_ANKIETER INTEGER
         )""")
     conection.commit()
 
@@ -35,9 +36,10 @@ def wpisz():
             row[ len(row) - 1 ] = ''
             row.append('')
             row.append('')
+            row.append('')
             database.execute(f"""
                     INSERT INTO Adresy
-                    VALUES ({i}, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    VALUES ({i}, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """, row)
             i += 1
             conection.commit()
