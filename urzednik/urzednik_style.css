@@ -35,7 +35,7 @@ h1 {
 
 .wniosek-name {
     font-size: 18px;
-    color: #363636;
+    color: #850909;
 }
 
 .buttons {
@@ -62,4 +62,53 @@ h1 {
 
 .button:hover {
     background-color: #a31a1a;
+}
+
+/* MEDIA QUERIES dla urządzeń mobilnych */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    .wniosek-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .buttons {
+        margin-top: 10px;
+        opacity: 1;
+    }
+
+    .button {
+        font-size: 16px;
+        width: 100%;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .wniosek-name {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    .wniosek-item {
+        padding: 10px;
+    }
+
+    .button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .wniosek-name {
+        font-size: 18px;
+    }
 }
