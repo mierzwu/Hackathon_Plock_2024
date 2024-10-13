@@ -1,3 +1,4 @@
+/* Ogólne style dla body */
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
@@ -5,6 +6,7 @@ body {
     background-color: #f4f4f4;
 }
 
+/* Styl nagłówka */
 header {
     background-color: #850909;
     padding: 15px;
@@ -14,10 +16,12 @@ header {
     color: white;
 }
 
+/* Lista zadań */
 .task-list {
     margin: 20px;
 }
 
+/* Element pojedynczego zadania */
 .task {
     margin: 10px 0;
     padding: 15px;
@@ -29,9 +33,10 @@ header {
 }
 
 .task:hover {
-    background-color: #f1f1f1;
+    background-color: #f1f1f1; /* Kolor tła po najechaniu */
 }
 
+/* Treść zadania */
 .task-content {
     overflow: hidden;
     max-height: 0;
@@ -43,6 +48,7 @@ header {
     max-height: 100px; /* Wysokość rozwinięcia */
 }
 
+/* Przycisk w treści zadania */
 .task-content button {
     display: block;
     width: 100%;
@@ -56,6 +62,7 @@ header {
     transition: background-color 0.2s ease;
 }
 
+/* Styl dla przycisku 'Wypełnij ankietę' */
 .task-content button.wypelnij-ankiete {
     background-color: #505050; /* Kolor tła przycisku 'Wypełnij ankietę' */
 }
@@ -64,6 +71,7 @@ header {
     background-color: #2f9d32; /* Zielony kolor po najechaniu */
 }
 
+/* Styl dla przycisku 'Mieszkaniec nieobecny' */
 .task-content button.mieszkaniec-nieobecny {
     background-color: #505050; /* Kolor tła przycisku 'Mieszkaniec nieobecny' */
 }
