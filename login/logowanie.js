@@ -5,7 +5,7 @@ document.querySelector('form').addEventListener('submit', function (event) {
     const password = document.getElementById('password').value;
 
     // Wysłanie danych logowania do serwera za pomocą fetch API
-    fetch('http://192.168.150.174:3000/login', {
+    fetch('http://192.168.1.113:3000/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

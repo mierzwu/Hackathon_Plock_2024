@@ -34,4 +34,4 @@ def send_email(email:str,access_code:str) -> None:
         print("email sent")#debug
         server.quit()
 
-
+send_email(sys.argv[1],sys.argv[2])

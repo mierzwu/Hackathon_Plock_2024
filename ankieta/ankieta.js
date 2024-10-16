@@ -1,52 +1,55 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const heatingType = document.getElementById('TYP_PIECA');
-    const heatingUsageContainer = document.getElementById('OGRZEWANIE');
-    const cwuUsageContainer = document.getElementById('CWU');
-    const heatPumpContainer = document.getElementById('POMPA_CIEPLA');
-    const fuelTypeContainer = document.getElementById('PALIWO');
+document.getElementById("heatingType").addEventListener("change", function() {
+    const selectedValue = this.value;
+    const additionalQuestions = document.getElementById("additionalQuestions");
 
-    const thermalOption = document.getElementById('THERMAL_OPTION');
-    const completedSection = document.getElementById('COMPLETED');
-    const planningSection = document.getElementById('PLANNING');
-    const wallsInsulatedYes = document.getElementById('wallsInsulatedYes');
-    const wallsPlanningYes = document.getElementById('wallsPlanningYes');
-    const wallsThicknessContainer = document.getElementById('WALLS_THICKNESS');
-    const planningWallsThicknessContainer = document.getElementById('PLANNING_WALLS_THICKNESS');
+    if (selectedValue) {
+        additionalQuestions.style.display = "block";
+    } else {
+        additionalQuestions.style.display = "none";
+    }
+});
 
-    heatingType.addEventListener('change', () => {
-        const selectedType = heatingType.value;
+document.getElementById("modernization").addEventListener("change", function() {
+    const selectedValue = this.value;
+    const modernizationA = document.getElementById("modernizationA");
+    const modernizationB = document.getElementById("modernizationB");
 
-        heatingUsageContainer.style.display = selectedType === 'solidFuel' ? 'none' : 'block';
-        cwuUsageContainer.style.display = selectedType === 'solidFuel' ? 'none' : 'block';
-        heatPumpContainer.style.display = selectedType === 'renewableEnergy' ? 'block' : 'none';
-        fuelTypeContainer.style.display = selectedType === 'solidFuel' ? 'block' : 'none';
+    modernizationA.style.display = "none";
+    modernizationB.style.display = "none";
+
+    if (selectedValue === "a") {
+        modernizationA.style.display = "block";
+    } else if (selectedValue === "b") {
+        modernizationB.style.display = "block";
+    }
+});
+
+document.getElementById("wallsInsulated").addEventListener("change", function() {
+    const wallsThicknessDiv = document.getElementById("wallsThicknessDiv");
+    wallsThicknessDiv.style.display = this.value === "tak" ? "block" : "none";
+});
+
+document.getElementById("futureWallsInsulated").addEventListener("change", function() {
+    const futureWallsThicknessDiv = document.getElementById("futureWallsThicknessDiv");
+    futureWallsThicknessDiv.style.display = this.value === "tak" ? "block" : "none";
+});
+
+document.getElementById("heatingForm").addEventListener("submit", function(event){
+    event.preventDefault();
+    fetch('http://192.168.1.113:3000/code', { // Updated to localhost for consistency
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({}),
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert('Dane zostały przesłane pomyślnie.');
+        window.location.href = '../dashboard_ekodoradca/dashboard.html'
+    })
+    .catch((error) => {
+        console.error('Błąd:', error);
+        alert('Wystąpił błąd podczas przesyłania danych.');
     });
-
-    thermalOption.addEventListener('change', () => {
-        const selectedOption = thermalOption.value;
-
-        completedSection.style.display = selectedOption === 'completed' ? 'block' : 'none';
-        planningSection.style.display = selectedOption === 'planning' ? 'block' : 'none';
-    });
-
-    wallsInsulatedYes.addEventListener('change', () => {
-        wallsThicknessContainer.style.display = wallsInsulatedYes.checked ? 'block' : 'none';
-    });
-
-    wallsPlanningYes.addEventListener('change', () => {
-        planningWallsThicknessContainer.style.display = wallsPlanningYes.checked ? 'block' : 'none';
-    });
-
-    // Initial visibility setup based on default values
-    const selectedType = heatingType.value;
-    heatingUsageContainer.style.display = selectedType === 'solidFuel' ? 'none' : 'block';
-    cwuUsageContainer.style.display = selectedType === 'solidFuel' ? 'none' : 'block';
-    heatPumpContainer.style.display = selectedType === 'renewableEnergy' ? 'block' : 'none';
-    fuelTypeContainer.style.display = selectedType === 'solidFuel' ? 'block' : 'none';
-
-    const selectedOption = thermalOption.value;
-    completedSection.style.display = selectedOption === 'completed' ? 'block' : 'none';
-    planningSection.style.display = selectedOption === 'planning' ? 'block' : 'none';
-    wallsThicknessContainer.style.display = wallsInsulatedYes.checked ? 'block' : 'none';
-    planningWallsThicknessContainer.style.display = wallsPlanningYes.checked ? 'block' : 'none';
 });

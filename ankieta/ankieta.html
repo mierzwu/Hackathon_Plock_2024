@@ -3,132 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formularz ogrzewania</title>
+    <title>Formularz Ogrzewania</title>
     <link rel="stylesheet" href="ankieta.css">
 </head>
 <body>
-    <div class="form-container">
-        <h2>Formularz dotyczący ogrzewania</h2>
-        <form id="heatingForm">
-            <!-- Existing form content -->
-            <label for="heatingType">Proszę podać rodzaj pieca:</label>
-            <select id="TYP_PIECA" name="heatingType" required>
-                <option value="">Wybierz</option>
-                <option value="solidFuel">Na paliwo stałe</option>
-                <option value="oilHeating">Ogrzewanie olejowe</option>
-                <option value="gasHeating">Ogrzewanie gazowe</option>
-                <option value="electricHeating">Ogrzewanie elektryczne</option>
-                <option value="districtHeating">Ogrzewanie z m.s.c.</option>
-                <option value="renewableEnergy">OZE</option>
-                <option value="other">Inne źródło ogrzewania</option>
-            </select>
+    <form id="heatingForm">
+        <h2>Formularz Ogrzewania</h2>
 
-            <label for="numberOfHeaters">Proszę podać ilość piecy:</label>
-            <select id="LICZBA_SZTUK" name="numberOfHeaters" required>
-                <option value="">Wybierz</option>
-                <option value="1">1</option>
+        <!-- Pytanie 1 -->
+        <label>1. Proszę podać rodzaj pieca:</label>
+        <select id="heatingType" name="heatingType" required>
+            <option value="">-- Wybierz --</option>
+            <option value="a" selected>Na paliwo stałe</option>
+            <option value="b">Ogrzewanie olejowe</option>
+            <option value="c">Ogrzewanie gazowe</option>
+            <option value="d">Ogrzewanie elektryczne</option>
+            <option value="e">Ogrzewanie z m.s.c.</option>
+            <option value="f">OZE</option>
+            <option value="g">Inne źródło ogrzewania</option>
+        </select>
+
+
+        <!-- Pozostałe pytania będą ukryte domyślnie -->
+            <!-- Istniejące pytania 2-7 tutaj -->
+            <label>2. Proszę podać ilość piecy:</label>
+            <select id="numberOfBoilers" name="numberOfBoilers" required>
+                <option value="1" selected>1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select>
 
-            <!-- Additional form elements for Thermal Modernization -->
-            <div id="THERMAL_MODERNIZATION">
-                <h3>Termodernizacja</h3>
-                <label>Proszę wybrać opcję:</label>
-                <select id="THERMAL_OPTION" name="thermalOption" required>
-                    <option value="">Wybierz</option>
-                    <option value="completed">Przeprowadzono</option>
-                    <option value="planning">Planuję</option>
-                    <option value="notPlanning">Nie planuję</option>
+            <!-- Pytanie 3 -->
+            <label>3. Czy wykorzystuje Pan/Pani go do ogrzewania:</label>
+            <select id="heatingUsage" name="heatingUsage" required>
+                <option value="tak">Tak</option>
+                <option value="nie" selected>Nie</option>
+            </select>
+
+            <!-- Pytanie 4 -->
+            <label>4. Czy wykorzystuje Pan/Pani go do produkcji CWU:</label>
+            <select id="cwuUsage" name="cwuUsage" required>
+                <option value="tak">Tak</option>
+                <option value="nie" selected>Nie</option>
+            </select>
+
+            <!-- Pytanie 5 -->
+            <label>5. Posiada Pan/Pani pompę ciepła:</label>
+            <select id="heatPump" name="heatPump" required>
+                <option value="tak">Tak</option>
+                <option value="nie" selected>Nie</option>
+            </select>
+
+            <!-- Pytanie 6 -->
+            <label>6. Jakie wykorzystuje Pan/Pani paliwo:</label>
+            <select id="fuelType" name="fuelType" required>
+                <option value="orzech">Orzech</option>
+                <option value="kostka">Kostka</option>
+                <option value="groszek" selected>Groszek</option>
+                <option value="miał">Miał</option>
+                <option value="węgiel brunatny">Węgiel brunatny</option>
+                <option value="drewno kawałkowe">Drewno kawałkowe</option>
+                <option value="pellet/brykiet">Pellet/Brykiet</option>
+                <option value="inna biomasa">Inna biomasa</option>
+                <option value="gaz przewodowy">Gaz przewodowy</option>
+                <option value="gaz butla/zbiornik">Gaz butla/zbiornik LPG/zbiornik</option>
+            </select>
+
+            <!-- Pytanie 7 -->
+            <label>7. Ile rocznie wydaje Pan/Pani na paliwo do pieca?</label>
+            <input type="number" id="fuelCost" name="fuelCost" placeholder="Kwota" value="" required>
+            <select id="costUnit" name="costUnit" required>
+                <option value="2524" selected>-- Jednostka --</option>
+                <option value="PLN" selected>PLN</option>
+                <option value="EUR">EUR</option>
+                <option value="USD">USD</option>
+            </select>
+            
+            <!-- Pytanie 8 -->
+            <label>8. Termomodernizacja:</label>
+            <select id="modernization" name="modernization" required>
+                <option value="">-- Wybierz --</option>
+                <option value="a">Przeprowadził Pan/Pani</option>
+                <option value="b">Planuję</option>
+                <option value="c">Nie planuję</option>
+            </select>
+
+            <!-- Pytania dla opcji a) Przeprowadził Pan/Pani -->
+            <div id="modernizationA" style="display: none;">
+                <label>Czy ściany są ocieplone?</label>
+                <select id="wallsInsulated" name="wallsInsulated">
+                    <option value="tak">Tak</option>
+                    <option value="nie" selected>Nie</option>
+                </select>
+                
+                <div id="wallsThicknessDiv" style="display: none;">
+                    <label>Jeśli tak, na jaką grubość są ocieplone? (cm)</label>
+                    <input type="number" id="wallsThickness" name="wallsThickness" min="0">
+                </div>
+
+                <label>Czy dach był ocieplany?</label>
+                <select id="roofInsulated" name="roofInsulated">
+                    <option value="tak"selected>Tak</option>
+                    <option value="nie">Nie</option>
                 </select>
 
-                <!-- Questions for completed modernization -->
-                <div id="COMPLETED" class="conditional">
-                    <h4>Informacje o przeprowadzonej termomodernizacji</h4>
-                    <label>Czy ściany są ocieplone?</label>
-                    <input type="radio" id="wallsInsulatedYes" name="wallsInsulated" value="yes">
-                    <label for="wallsInsulatedYes">Tak</label>
-                    <input type="radio" id="wallsInsulatedNo" name="wallsInsulated" value="no">
-                    <label for="wallsInsulatedNo">Nie</label>
+                <label>Czy strop był ocieplany?</label>
+                <select id="ceilingInsulated" name="ceilingInsulated">
+                    <option value="tak"selected>Tak</option>
+                    <option value="nie">Nie</option>
+                </select>
 
-                    <div id="WALLS_THICKNESS" class="conditional">
-                        <label>Na jaką grubość są ocieplone? (cm)</label>
-                        <input type="number" id="wallsThickness" name="wallsThickness" min="1" step="1">
-                    </div>
+                <label>Czy była wymiana okien?</label>
+                <select id="windowsReplaced" name="windowsReplaced">
+                    <option value="tak">Tak</option>
+                    <option value="nie"selected>Nie</option>
+                </select>
 
-                    <label>Czy dach był ocieplany?</label>
-                    <input type="radio" id="roofInsulatedYes" name="roofInsulated" value="yes">
-                    <label for="roofInsulatedYes">Tak</label>
-                    <input type="radio" id="roofInsulatedNo" name="roofInsulated" value="no">
-                    <label for="roofInsulatedNo">Nie</label>
-
-                    <label>Czy strop był ocieplany?</label>
-                    <input type="radio" id="ceilingInsulatedYes" name="ceilingInsulated" value="yes">
-                    <label for="ceilingInsulatedYes">Tak</label>
-                    <input type="radio" id="ceilingInsulatedNo" name="ceilingInsulated" value="no">
-                    <label for="ceilingInsulatedNo">Nie</label>
-
-                    <label>Czy była wymiana okien?</label>
-                    <input type="radio" id="windowsReplacedYes" name="windowsReplaced" value="yes">
-                    <label for="windowsReplacedYes">Tak</label>
-                    <input type="radio" id="windowsReplacedNo" name="windowsReplaced" value="no">
-                    <label for="windowsReplacedNo">Nie</label>
-
-                    <label>Czy była wymiana drzwi?</label>
-                    <input type="radio" id="doorsReplacedYes" name="doorsReplaced" value="yes">
-                    <label for="doorsReplacedYes">Tak</label>
-                    <input type="radio" id="doorsReplacedNo" name="doorsReplaced" value="no">
-                    <label for="doorsReplacedNo">Nie</label>
-                </div>
-
-                <!-- Questions for planned modernization -->
-                <div id="PLANNING" class="conditional">
-                    <h4>Plany termomodernizacji</h4>
-                    <label>Czy ściany będą ocieplone?</label>
-                    <input type="radio" id="wallsPlanningYes" name="wallsPlanning" value="yes">
-                    <label for="wallsPlanningYes">Tak</label>
-                    <input type="radio" id="wallsPlanningNo" name="wallsPlanning" value="no">
-                    <label for="wallsPlanningNo">Nie</label>
-
-                    <div id="PLANNING_WALLS_THICKNESS" class="conditional">
-                        <label>Na jaką grubość będą ocieplone? (cm)</label>
-                        <input type="number" id="planningWallsThickness" name="planningWallsThickness" min="1" step="1">
-                    </div>
-
-                    <label>Czy dach będzie ocieplany?</label>
-                    <input type="radio" id="roofPlanningYes" name="roofPlanning" value="yes">
-                    <label for="roofPlanningYes">Tak</label>
-                    <input type="radio" id="roofPlanningNo" name="roofPlanning" value="no">
-                    <label for="roofPlanningNo">Nie</label>
-
-                    <label>Czy strop będzie ocieplany?</label>
-                    <input type="radio" id="ceilingPlanningYes" name="ceilingPlanning" value="yes">
-                    <label for="ceilingPlanningYes">Tak</label>
-                    <input type="radio" id="ceilingPlanningNo" name="ceilingPlanning" value="no">
-                    <label for="ceilingPlanningNo">Nie</label>
-
-                    <label>Czy będzie wymiana okien?</label>
-                    <input type="radio" id="windowsPlanningYes" name="windowsPlanning" value="yes">
-                    <label for="windowsPlanningYes">Tak</label>
-                    <input type="radio" id="windowsPlanningNo" name="windowsPlanning" value="no">
-                    <label for="windowsPlanningNo">Nie</label>
-
-                    <label>Czy będzie wymiana drzwi?</label>
-                    <input type="radio" id="doorsPlanningYes" name="doorsPlanning" value="yes">
-                    <label for="doorsPlanningYes">Tak</label>
-                    <input type="radio" id="doorsPlanningNo" name="doorsPlanning" value="no">
-                    <label for="doorsPlanningNo">Nie</label>
-                </div>
+                <label>Czy była wymiana drzwi?</label>
+                <select id="doorsReplaced" name="doorsReplaced">
+                    <option value="tak">Tak</option>
+                    <option value="nie"selected>Nie</option>
+                </select>
             </div>
 
-            <label for="annualFuelCost">Ile rocznie wydaje Pan/Pani na paliwo do pieca? (wraz z jednostką):</label>
-            <input type="text" id="ILOSC_PALIWA" name="annualFuelCost" required>
+            <!-- Pytania dla opcji b) Planuję -->
+            <div id="modernizationB" style="display: none;">
+                <label>Czy ściany będą ocieplone?</label>
+                <select id="futureWallsInsulated" name="futureWallsInsulated">
+                    <option value="tak">Tak</option>
+                    <option value="nie"selected>Nie</option>
+                </select>
 
-            <button type="submit">Wyślij</button>
-        </form>
-    </div>
+                <div id="futureWallsThicknessDiv" style="display: none;">
+                    <label>Jeśli tak, na jaką grubość będą ocieplone? (cm)</label>
+                    <input type="number" id="futureWallsThickness" name="futureWallsThickness" min="0">
+                </div>
+
+                <label>Czy dach będzie ocieplany?</label>
+                <select id="futureRoofInsulated" name="futureRoofInsulated">
+                    <option value="tak"selected>Tak</option>
+                    <option value="nie">Nie</option>
+                </select>
+
+                <label>Czy strop będzie ocieplany?</label>
+                <select id="futureCeilingInsulated" name="futureCeilingInsulated">
+                    <option value="tak"selected>Tak</option>
+                    <option value="nie">Nie</option>
+                </select>
+
+                <label>Czy będzie wymiana okien?</label>
+                <select id="futureWindowsReplaced" name="futureWindowsReplaced">
+                    <option value="tak"selected>Tak</option>
+                    <option value="nie">Nie</option>
+                </select>
+
+                <label>Czy będzie wymiana drzwi?</label>
+                <select id="futureDoorsReplaced" name="futureDoorsReplaced">
+                    <option value="tak">Tak</option>
+                    <option value="nie"selected>Nie</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="submit">Wyślij</button>
+    </form>
 
     <script src="ankieta.js"></script>
 </body>

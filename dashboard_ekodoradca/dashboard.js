@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     async function fetchTasks() {
         try {
-            const response = await fetch('http://192.168.150.174:3000/places');
+            const response = await fetch('http://192.168.1.113:3000/places');
             if (!response.ok) {
                 throw new Error('Network error');
             }
@@ -68,9 +68,27 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function handleAnkieta(taskId) {
-    alert('Fill the survey for task ' + taskId);
+    window.location.href = '../ankieta/ankieta.html';
+    const taskElement = document.getElementById(taskId);
+
+    // Sprawdź, czy element istnieje
+    if (taskElement) {
+        // Usuń element z drzewa DOM
+        taskElement.remove();
+    } else {
+        console.error('Task not found: ' + taskId);
+    }
+    
 }
 
 function handleNieobecnosc(taskId) {
-    alert('Resident absent for task ' + taskId);
+    const taskElement = document.getElementById(taskId);
+
+    // Sprawdź, czy element istnieje
+    if (taskElement) {
+        // Usuń element z drzewa DOM
+        taskElement.remove();
+    } else {
+        console.error('Task not found: ' + taskId);
+    }
 }

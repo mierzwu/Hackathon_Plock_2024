@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
             timeBlock: document.getElementById('time-block').value 
         }
 
-        fetch('http://192.168.150.174:3000/email', { // Updated to localhost for consistency
+        fetch('http://192.168.1.113:3000/email', { // Updated to localhost for consistency
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Wystąpił błąd podczas przesyłania danych.');
         });
 
-        fetch('http://192.168.150.174:3000/submit', {
+        fetch('http://192.168.1.113:3000/submit', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

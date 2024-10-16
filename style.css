@@ -55,7 +55,8 @@ body {
 }
 
 .gradient-button {
-    background-image: linear-gradient(to right, #00b09b, #96c93d);
+    /*background-image: linear-gradient(to right, #00b09b, #96c93d);*/
+    background-color: #363636;
 }
 
 .gradient-button:hover {
@@ -64,8 +65,7 @@ body {
 }
 
 .login-button {
-    background-color: #41e6d2;
-    background-image: linear-gradient(to right, #00b09b, #96c93d); /* Zmieniono, aby pasował do kolorystyki */
+    background-color: #363636;
 }
 
 .login-button:hover {
@@ -87,6 +87,6 @@ body {
     }
 
     .button {
-        max-width: 95%;
+        max-width: 90%;
     }
 }

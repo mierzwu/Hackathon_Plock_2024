@@ -25,6 +25,31 @@ const db = new sqlite3.Database('./baza_piece.db', (err) => {
     }
 });
 
+app.post('/code',  (req, res) => {
+    const email = 'janszala.04@gmail.com';
+    const code = 'xb2akirs8#4a!'
+
+    // Construct the command to run the Python script with arguments
+    const command = `python3 ../python/access_code_sender.py ${email} ${code}`;
+
+    // Execute the command
+    exec(command, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error: ${error.message}`);
+            res.status(500).json({ message: 'Error executing script' });
+            return;
+        }
+        if (stderr) {
+            console.error(`Standard Error: ${stderr}`);
+            res.status(500).json({ message: 'Script execution error' });
+            return;
+        }
+
+        console.log(`Standard Output: ${stdout}`);
+        res.json({ message: 'Dane zostały zaktualizowane pomyślnie' });
+    });
+});
+
 app.post('/email', (req, res) => {
     const email = 'janszala.04@gmail.com';
     const data = req.body.data; // Assuming you meant req.body.data
@@ -32,6 +57,13 @@ app.post('/email', (req, res) => {
 
     // Construct the command to run the Python script with arguments
     const command = `python3 ../python/confirmation_sender.py ${email} ${data} ${time}`;
+
+
+    const query = `UPDATE Adresy
+        SET ID_ANKIETER = 0
+        WHERE Ulica = '21 Stycznia'`;
+
+    db.run(query, []);
 
     // Execute the command
     exec(command, (error, stdout, stderr) => {
